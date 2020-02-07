@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
     @IBAction func heightSlider(_ sender: UISlider) {
@@ -31,26 +31,27 @@ class ViewController: UIViewController {
     
     @IBAction func weightSlider(_ sender: UISlider) {
         
-        let currentvValue = String(format: "%.0f", sender.value)
+        let currentValue = String(format: "%.0f", sender.value)
         
-        weightLabel.text = currentvValue
+        weightLabel.text = "\(currentValue) kg"
+        
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         
-        CalculateBMI()
-    }
-    
-    
-    func CalculateBMI(){
+        //Get value of both sliders
         let height = heightSliderOutlet.value
         let weight = weightSliderOutlet.value
         
+        //Formula to get your BMI
         let bmi = weight / (height * height)
         
-        bmiResult.text = String(bmi)
+        //Round value to 1 decimal place
+        let decimal = String(format: "%.1f", bmi)
         
-        print(bmi)
+        //BMI result display on label
+        bmiResult.text = String(decimal)
+        
     }
     
 }
